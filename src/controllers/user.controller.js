@@ -252,6 +252,8 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
         throw new ApiError(500, "Failed to upload avatar image");
     }
 
+    await unlinkFile(avatarLocalPath);
+
     const user =await User.findByIdAndUpdate(
         req.user?._id,
         {
@@ -278,6 +280,8 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
     if (!coverImage.url) {
         throw new ApiError(500, "Failed to upload cover image");
     }
+
+    await unlinkFile(coverImageLocalPath);
 
     const user =await User.findByIdAndUpdate(
         req.user?._id,

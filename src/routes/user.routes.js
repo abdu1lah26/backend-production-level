@@ -31,7 +31,8 @@ router.route('/refresh-token').post(refreshAccessToken);
 router.route('/change-password').post(verifyJWT, changeCurrentPassword);
 router.route('/update-profile').put(verifyJWT, updateAccountDetails);
 router.route('/update-avatar').put(verifyJWT, upload.single("avatar"), updateUserAvatar);
-router.route('/update-cover-image').put(verifyJWT, upload.single("coverImage"), updateUserCoverImage);
+router.route('/update-cover-image').put(verifyJWT, upload.single("coverImage"),
+updateUserCoverImage);
 router.route('/me').get(verifyJWT, getCurrentUser);
 
 
